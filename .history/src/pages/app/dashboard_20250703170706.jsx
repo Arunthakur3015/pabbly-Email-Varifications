@@ -1,0 +1,21 @@
+import { Helmet } from 'react-helmet-async';
+
+import { CONFIG } from 'src/config-global';
+
+import { BlankView } from 'src/sections/blank/view';
+
+import {pageheader} from 'src/components/pageheader';
+
+// ----------------------------------------------------------------------
+
+const metadata = { title: `Page one | Dashboard - ${CONFIG.site.name}` };
+
+export default function Page() {
+  return (
+    <>
+      <DashboardContent>
+        <page-header></page-header>
+      </DashboardContent>
+    </>
+  );
+}

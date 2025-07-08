@@ -1,0 +1,15 @@
+import Box from '@mui/material/Box';
+
+export const SvgColorImage = ({ src, sx, ...other }) => (
+  <Box
+    component="img"
+    src={src}
+    alt="icon"
+    sx={{
+      width: 36,
+      height: 36,
+      ...sx,
+    }}
+    {...other}
+  />
+);

@@ -1,0 +1,26 @@
+import { useState } from 'react';
+import Box from '@mui/material/Box';
+
+import { PageHeader } from 'src/components/pageheader/page-header';
+import VerifySingleEmailModal from 'src/components/verifysingleemail/verify-single';
+
+export default function Dashboard() {
+  const [openSingleModal, setOpenSingleModal] = useState(false);
+  const [openBulkModal, setOpenBulkModal] = useState(false);
+
+  return (
+    <Box sx={{ pt: 1.5, px: 5 }}>
+      <PageHeader
+        title="Dashboard"
+        description="Verify and manage all your email lists in one place with the Pabbly Email Verification Dashboard."
+        buttonTitle="Verify Email"
+        onSingleEmailClick={() => setOpenSingleModal(true)}
+        onBulkEmailClick={() => setOpenBulkModal(true)}
+      />
+
+      {/* ✅ Only show respective modals */}
+      <VerifySingleEmailModal open={openSingleModal} onClose={() => setOpenSingleModal(false)} />
+      <BulkVerifyEmailModal open={openBulkModal} onClose={() => setOpenBulkModal(false)} />
+    </Box>
+  );
+}

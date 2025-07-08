@@ -1,0 +1,3 @@
+'react-apexcharts' should be listed in the project's dependencies. Run 'npm i -S react-apexcharts' to add iteslintimport/no-extraneous-dependencies
+(alias) class ApexChart
+import ApexChart

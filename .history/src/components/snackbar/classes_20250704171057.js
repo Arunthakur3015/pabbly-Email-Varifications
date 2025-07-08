@@ -1,0 +1,17 @@
+export const toasterClasses = {
+  root: 'snackbar__root',
+  toast: 'snackbar__toast',
+  icon: 'snackbar__icon',
+  content: 'snackbar__content',
+  title: 'snackbar__title',
+  description: 'snackbar__description',
+  actionButton: 'snackbar__action__button',
+  cancelButton: 'snackbar__cancel__button',
+  closeButton: 'snackbar__close__button',
+  loadingIcon: 'snackbar__loading__icon',
+  info: 'snackbar__info',
+  success: 'snackbar__success',
+  warning: 'snackbar__warning',
+  error: 'snackbar__error',
+  default: 'snackbar__default',
+};
