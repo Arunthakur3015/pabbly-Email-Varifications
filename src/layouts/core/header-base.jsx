@@ -1,15 +1,12 @@
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
-import SearchIcon from '@mui/icons-material/Search';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import { styled, useTheme } from '@mui/material/styles';
 
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 
 import { Logo } from 'src/components/logo';
-import MenuButton from 'src/components/menu-button';
 import DropHeaderAppsButton from 'src/components/DropHeaderAppsButton';
 
 import { HeaderSection } from './header-section';
@@ -64,16 +61,13 @@ export function HeaderBase({
   ...other
 }) {
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <HeaderSection
       sx={{
         backgroundColor: 'common.white',
-        borderBottom: '1px dashed',
-        borderColor: '#000000',
-        px: { xs: 1, sm: 3 },
-        py: 1,
+        bordberBottom: '1px dashed',
+        bordercolor: '#00000',
         ...sx,
       }}
       layoutQuery={layoutQuery}
@@ -83,18 +77,6 @@ export function HeaderBase({
         leftArea: (
           <>
             {slots?.leftAreaStart}
-
-            {menuButton && (
-              <MenuButton
-                data-slot="menu-button"
-                onClick={onOpenNav}
-                sx={{
-                  mr: 1,
-                  ml: -1,
-                  [theme.breakpoints.up(layoutQuery)]: { display: 'none' },
-                }}
-              />
-            )}
 
             {isLoginPage ? (
               <Box sx={{ display: 'flex', alignItems: 'center', height: '100%' }}>
@@ -111,7 +93,7 @@ export function HeaderBase({
                 >
                   <Box
                     component="img"
-                    src="/logo/PEV_logo.svg"
+                    src="/logo/pabbly-email.png"
                     alt="logo"
                     width={120}
                     sx={{ height: '100%', objectFit: 'contain' }}
@@ -144,10 +126,10 @@ export function HeaderBase({
               sx={{
                 display: 'flex',
                 alignItems: 'center',
+                flexWrap: 'nowrap',
+                overflowX: 'hidden',
+                overflowY: 'hidden',
                 gap: { xs: 1, sm: 1.5 },
-                flexWrap: 'wrap',
-                justifyContent: { xs: 'flex-start', sm: 'flex-end' },
-                whiteSpace: 'normal',
               }}
             >
               {helpLink && (
@@ -159,39 +141,19 @@ export function HeaderBase({
                   underline="hover"
                   sx={{
                     typography: 'subtitle2',
-                    fontSize: { xs: '10px', sm: '13px' },
-                    maxWidth: 120,
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
+                    display: { xs: 'none', sm: 'block' },
+                    textAlign: 'center',
+                    mt: '4px',
                   }}
                 >
                   Don&apos;t have a Pabbly account yet?
                 </Link>
               )}
 
+              {/* Hide searchbar on xs */}
               {searchbar && (
-                <Box
-                  sx={{
-                    flexShrink: 1,
-                    minWidth: isSmallScreen ? 'auto' : 120,
-                    maxWidth: { xs: 40, sm: 'auto' },
-                  }}
-                >
-                  {isSmallScreen ? (
-                    <Button
-                      size="small"
-                      sx={{
-                        minWidth: 'auto',
-                        padding: '6px',
-                        borderRadius: '50%',
-                        color: 'text.secondary',
-                      }}
-                    >
-                      <SearchIcon fontSize="small" />
-                    </Button>
-                  ) : (
-                    <Searchbar data-slot="searchbar" data={data?.nav} />
-                  )}
+                <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                  <Searchbar data-slot="searchbar" data={data?.nav} />
                 </Box>
               )}
 
@@ -207,10 +169,10 @@ export function HeaderBase({
                     color="error"
                     size="small"
                     sx={{
-                      height: 30,
-                      fontSize: '10px',
-                      px: 1,
-                      minWidth: 70,
+                      width: 81.47,
+                      height: 36,
+                      display: { xs: 'inline-flex', sm: 'inline-flex' },
+                      whiteSpace: 'nowrap',
                     }}
                   >
                     Upgrade
@@ -219,7 +181,7 @@ export function HeaderBase({
               )}
 
               {dropheaderbutton && (
-                <Box>
+                <Box sx={{ display: 'inline-flex' }}>
                   <DropHeaderAppsButton />
                 </Box>
               )}
@@ -230,22 +192,14 @@ export function HeaderBase({
                   href={paths.auth.jwt.signUp}
                   variant="outlined"
                   color="info"
-                  size="small"
-                  sx={{
-                    fontSize: '11px',
-                    height: 30,
-                    minWidth: 100,
-                  }}
+                  size="medium"
+                  sx={{ whiteSpace: 'nowrap' }}
                 >
                   Create Account
                 </Button>
               )}
 
-              {account && (
-                <Box>
-                  <AccountDrawer data-slot="account" data={data?.account} />
-                </Box>
-              )}
+              {account && <AccountDrawer data-slot="account" data={data?.account} />}
 
               {purchase && (
                 <Button

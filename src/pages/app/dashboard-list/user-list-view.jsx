@@ -131,7 +131,7 @@ export function UserListView() {
 
   return (
     <>
-      <Box sx={{ width: '100%', px: { xs: 2, md: 3 }, mt: 3.5 }}>
+      <Box sx={{ width: '1008px', px: { xs: 2, md: 3 }, mt: 3.5 }}>
         <Card sx={{ mt: 4 }}>
           <CardHeader title={<Typography>Home</Typography>} sx={{ mb: 1.5, fontSize: 18 }} />
 

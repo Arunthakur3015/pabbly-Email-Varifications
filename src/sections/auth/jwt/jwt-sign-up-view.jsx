@@ -1,4 +1,4 @@
-import { z as zod } from 'zod';
+import { z as zod } from 'zod'; 
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -24,6 +24,7 @@ import { useRouter } from 'src/routes/hooks';
 import { signUp } from 'src/auth/context/jwt';
 import { useAuthContext } from 'src/auth/hooks';
 
+// ✅ Updated Captcha Component
 const CaptchaComponent = ({ onVerify }) => {
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -106,7 +107,7 @@ const CaptchaComponent = ({ onVerify }) => {
         >
           <Box
             component="img"
-            src="/assets/icons/captcha-icon.jpg"
+            src="/assets/icons/captcha-icon.jpg" // 👉 अपनी image का path यहाँ डालो
             alt="Captcha Icon"
             sx={{
               width: '28px',
@@ -141,6 +142,8 @@ const CaptchaComponent = ({ onVerify }) => {
   );
 };
 
+// --------------------------------------------------
+
 export const SignUpSchema = zod.object({
   firstName: zod.string().min(1, { message: 'First name is required!' }),
   lastName: zod.string().min(1, { message: 'Last name is required!' }),
@@ -166,10 +169,7 @@ const textFieldStyles = {
     '&.Mui-focused fieldset': { borderColor: '#1976d2' },
   },
   '& .MuiInputBase-root': { backgroundColor: 'white !important' },
-  '& .MuiInputBase-input': {
-    backgroundColor: 'white !important',
-    fontSize: { xs: '0.85rem', sm: '0.95rem' },
-  },
+  '& .MuiInputBase-input': { backgroundColor: 'white !important', fontSize: '0.95rem' },
 };
 
 export default function JwtSignUpView() {
@@ -180,13 +180,7 @@ export default function JwtSignUpView() {
 
   const methods = useForm({
     resolver: zodResolver(SignUpSchema),
-    defaultValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    },
+    defaultValues: { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' },
   });
 
   const {
@@ -219,14 +213,14 @@ export default function JwtSignUpView() {
         alignItems: 'center',
         justifyContent: 'center',
         py: 4,
-        px: 1,
+        overflowX: 'hidden',
       }}
     >
       <Box
         sx={{
           width: '100%',
           maxWidth: '420px',
-          p: { xs: 2, sm: 4 },
+          p: '32px',
           backgroundColor: 'white',
           borderRadius: 2,
           boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
@@ -244,7 +238,6 @@ export default function JwtSignUpView() {
             color: 'rgb(28, 37, 46)',
             mb: 0,
             textAlign: 'center',
-            fontSize: { xs: '1.2rem', sm: '1.5rem' },
           }}
         >
           Create Your Pabbly Account
@@ -253,7 +246,7 @@ export default function JwtSignUpView() {
         <Typography
           sx={{
             fontWeight: 400,
-            fontSize: { xs: '13px', sm: '14px' },
+            fontSize: '14px',
             color: 'rgb(99, 115, 129)',
             mb: 2,
             textAlign: 'center',
@@ -261,7 +254,6 @@ export default function JwtSignUpView() {
         >
           Create an account in seconds. No credit card required.
         </Typography>
-
         <Button
           variant="outlined"
           sx={{
@@ -269,14 +261,14 @@ export default function JwtSignUpView() {
             maxWidth: '356px',
             height: '40px',
             mb: 2,
-            border: '1px solid black',
+            border: '1px solid black', // black stroke
             color: 'rgb(28, 37, 46)',
             textTransform: 'none',
-            fontSize: { xs: '13px', sm: '14px' },
+            fontSize: '14px',
             fontWeight: 700,
             lineHeight: '24px',
             '&:hover': {
-              boxShadow: '0 0 10px rgba(0,0,0,0.2)',
+              boxShadow: '0 0 10px rgba(0,0,0,0.2)', // shadow on hover
               borderColor: 'black',
               backgroundColor: '#f9f9f9',
             },
@@ -318,7 +310,7 @@ export default function JwtSignUpView() {
           onSubmit={handleSubmit(onSubmit)}
           sx={{ width: '100%', maxWidth: '356px' }}
         >
-          <Box sx={{ display: 'flex', gap: 1, mb: 2, flexDirection: { xs: 'column', sm: 'row' } }}>
+          <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
             <TextField
               fullWidth
               label="First Name"
@@ -402,7 +394,7 @@ export default function JwtSignUpView() {
               height: '48px',
               mb: 2,
               backgroundColor: '#1976d2',
-              fontSize: { xs: '0.9rem', sm: '1rem' },
+              fontSize: '1rem',
               fontWeight: 600,
               textTransform: 'none',
               borderRadius: 1,
@@ -446,7 +438,7 @@ export default function JwtSignUpView() {
                 '&:hover': { textDecoration: 'underline' },
               }}
             >
-              Pabbly&apos;s Terms of Service
+              Pabbly&apos;s{' '} Terms of Service
             </Link>{' '}
             and{' '}
             <Link

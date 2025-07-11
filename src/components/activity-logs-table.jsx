@@ -80,6 +80,7 @@ const ActivityLogsTable = () => (
       borderRadius: 2,
       overflow: 'hidden',
       mt: 4,
+      mb:4
     }}
   >
     {/* Header Section with Filter Button */}

@@ -72,6 +72,7 @@ const CreditsSummaryTable = () => {
         borderRadius: 2,
         overflow: 'hidden',
         mt: 4,
+        mb:4
       }}
     >
       {/* Header */}

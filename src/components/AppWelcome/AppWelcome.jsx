@@ -19,7 +19,7 @@ function AppWelcome({
   img,
   videoUrl,
   buttonTitle,
-  containerWidth = 'xl',
+  containerWidth = '960px',
   containerPadding = '40px',
   imageWidth = '435px',
   imageHeight = '244.68px',
@@ -54,18 +54,19 @@ function AppWelcome({
     <>
       <Box
         sx={{
-          ml: 3,
+          ml: { xs: 1, sm: 2, md: 3 },
           mt: 3.5,
           width: containerWidth,
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
-          alignItems: { xs: 'center', md: 'flex-start' },
+          alignItems: { xs: 'stretch', md: 'flex-start' },
           justifyContent: 'space-between',
           gap: 3,
           p: { xs: 2, sm: 3, md: containerPadding },
           borderRadius: 2,
           bgcolor: 'background.paper',
           boxShadow: 1,
+          overflow: 'hidden',
           ...sx,
         }}
         {...other}
@@ -109,6 +110,7 @@ function AppWelcome({
                 onClick={handleDropdownClick}
                 startIcon={<Iconify icon="octicon:feed-plus-16" width="16px" height="16px" />}
                 endIcon={<Iconify icon="mingcute:down-line" width="20px" height="20px" />}
+                fullWidth={false}
               >
                 {buttonTitle}
               </Button>
@@ -141,7 +143,7 @@ function AppWelcome({
             alt="Illustration"
             onClick={handleOpenVideo}
             sx={{
-              mt: { xs: 3, md: 4 },
+              mt: { xs: 3, md: 0 },
               flexShrink: 0,
               width: { xs: '100%', sm: imageWidth },
               height: { xs: 'auto', sm: imageHeight },
